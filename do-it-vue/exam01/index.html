@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Sample</title>
+  </head>
+  <body>
+    <div id="app">{{message}}</div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      // 뷰 인스턴스
+      // 속성에는 el, data, template, methods, created 등..
+      new Vue({
+        el: `#app`,
+        data: {
+          message: "Hello world",
+        },
+        // 이벤트 및 라이프사이클 초기화 이후
+        beforeCreate() {
+          console.log("beforeCreate");
+        },
+        // data, methods 속성 정의된 이후이며 this.data, this.fetchData()같은 로직을  통해 속성에 정의된 값에 접근하여 로직을 실행할 수 있다.
+        // 인스턴스가 화면 요소에 부착되기 이전이므로 template 속성에 정의된 돔 요소로 접근 불가능
+        created() {
+          console.log("created");
+        },
+        // render()함수가 호출되기 직전의 로직을 추가하기 좋음. (아직 돔 그려지지 않음)
+        beforeMount() {
+          console.log("beforeMount");
+        },
+        // el속성에서 지정한 요소에 인스턴스 부착 이후 호출
+        mounted() {
+          console.log("mounted");
+          this.message = "Hello Vue!";
+        },
+        // 데이터 변경 이후
+        updated() {
+          console.log("updated");
+        },
+      });
+    </script>
+  </body>
+</html>
