@@ -6,7 +6,8 @@
         :id="id"
         type="text"
         autocomplete="off"
-        v-model.lazy.trim="newLabel"
+        v-bind:value="newLabel"
+        v-on:input="updateInput"
       />
     </div>
     <div class="btn-group">
@@ -46,6 +47,10 @@ export default {
     },
     onCancel() {
       this.$emit("edit-cancelled");
+    },
+    updateInput(e) {
+      const updatedText = e.target.value;
+      this.newLabel = updatedText;
     },
   },
 };

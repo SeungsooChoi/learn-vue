@@ -10,7 +10,8 @@
       id="new-todo-input"
       name="new-todo"
       autocomplete="off"
-      v-model.lazy.trim="label"
+      v-bind:value="label"
+      v-on:input="updateInput"
       class="input__lg"
     />
     <button type="submit" class="btn btn__primary btn__lg">Add</button>
@@ -25,6 +26,10 @@ export default {
       }
       this.$emit("todo-added", this.label);
       this.label = "";
+    },
+    updateInput(e) {
+      const updatedText = e.target.value;
+      this.label = updatedText;
     },
   },
   data() {
