@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Router Sample</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>뷰 라우터 예제</h1>
+      <p>
+        <router-link to="/main">Main 컴포넌트로 이동</router-link>
+        <router-link to="/login">login 컴포넌트로 이동</router-link>
+      </p>
+      <!-- 갱신된 URL에 해당하는 화면을 보여줌 -->
+      <router-view></router-view>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+    <script>
+      const Main = { template: "<div>main</div>" };
+      const Login = { template: "<div>login</div>" };
+
+      // 각 URL에 맞춰 표시할 컴포넌트 설정
+      const routes = [
+        { path: "/main", component: Main },
+        { path: "/login", component: Login },
+      ];
+
+      // 뷰 라우터 정의
+      const router = new VueRouter({
+        routes,
+      });
+
+      const app = new Vue({
+        router,
+      }).$mount("#app"); // $mount()는 인스턴스를 화면에 붙이는 역할
+    </script>
+  </body>
+</html>
