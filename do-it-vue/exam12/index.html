@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Sample</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{message}}</p>
+      <button v-on:click="reverseMsg">리버스</button>
+      <input v-model="message" />
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          message: "Hello Vue.js!",
+        },
+        methods: {
+          reverseMsg() {
+            this.message = this.message.split("").reverse().join("");
+            return this.message;
+          },
+        },
+        watch: {
+          message(data) {
+            console.log(`message의 값 바뀜 : ${data}`);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
