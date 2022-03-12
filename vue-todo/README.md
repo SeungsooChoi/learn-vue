@@ -21,3 +21,5 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 line-height
 vertical-align
 box model
+\$emit
+v-on을 통해 이벤트 전달
