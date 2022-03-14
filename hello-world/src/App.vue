@@ -10,11 +10,14 @@
     <span v-show="state.flag">true일때 보임</span>
     <button @click="changeFlag">Change</button>
   </div>
+  <todo-header @call="call" :count="state.count"></todo-header>
 </template>
 
 <script>
 import { reactive, computed } from "vue";
+import TodoHeader from "./components/TodoHeader.vue";
 export default {
+  components: { TodoHeader },
   setup() {
     const state = reactive({
       count: 0,
@@ -26,13 +29,20 @@ export default {
     const add = () => {
       state.count++;
     };
+
     const changeFlag = () => {
       state.flag = !state.flag;
     };
+
+    const call = (text) => {
+      alert(text);
+    };
+
     return {
       state,
       add,
       changeFlag,
+      call,
     };
   },
 };
