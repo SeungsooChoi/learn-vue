@@ -8,6 +8,7 @@ export default {
   props: {
     count: Number,
   },
+  emits: ["call"],
   setup(props, { emit }) {
     const handleClick = () => {
       emit("call", "todoHeader");
