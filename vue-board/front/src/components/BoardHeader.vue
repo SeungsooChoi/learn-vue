@@ -7,9 +7,8 @@
   </div>
   <div>
     <ul>
-      <li>upload</li>
-      <li>profile</li>
-      <li>logout</li>
+      <router-link to="/">Home</router-link>
+      <router-link to="/post">Post</router-link>
     </ul>
   </div>
 </template>
